@@ -1,6 +1,6 @@
 # TodoMVC Performance Benchmark
 
-<img src="img/2016-07-08.png" width="504">
+<img src="img/2017-07-01.png" width="504">
 
 _(Results for Chrome 51 + OSX 10.10.5 on a Macbook Pro)_
 
