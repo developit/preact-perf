@@ -506,7 +506,7 @@ Suites.push({
 Suites.push({
     name: 'choo',
     url: 'todomvc/choo/index.html',
-    version: '1.3.0',
+    version: '6.0.0-1',
     prepare: function (runner, contentWindow, contentDocument) {
         return runner.waitForElement('.new-todo').then(function (element) {
             element.focus();
