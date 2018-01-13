@@ -167,6 +167,80 @@ Suites.push({
 });
 
 Suites.push({
+    name: 'Keet 1.0.8',
+    url: 'todomvc/keet/index.html',
+    version: '1.0.8',
+    prepare: function (runner, contentWindow, contentDocument) {
+        return runner.waitForElement('#new-todo').then(function (element) {
+            element.focus();
+            return element;
+        });
+    },
+    tests: [
+        new BenchmarkTestStep('Adding' + numberOfItemsToAdd + 'Items', function (newTodo, contentWindow, contentDocument) {
+            for (var i = 0; i < numberOfItemsToAdd; i++) {
+                var inputEvent = document.createEvent('Event');
+                inputEvent.initEvent('input', true, true);
+                newTodo.value = 'Something to do ' + i;
+                newTodo.dispatchEvent(inputEvent);
+
+                var keydownEvent = document.createEvent('Event');
+                keydownEvent.initEvent('keydown', true, true);
+                keydownEvent.keyCode = 13; // VK_ENTER
+                newTodo.dispatchEvent(keydownEvent);
+            }
+        }),
+        new BenchmarkTestStep('CompletingAllItems', function (newTodo, contentWindow, contentDocument) {
+            var checkboxes = contentDocument.querySelectorAll('.toggle');
+            for (var i = 0; i < checkboxes.length; i++)
+                checkboxes[i].click();
+        }),
+        new BenchmarkTestStep('DeletingAllItems', function (newTodo, contentWindow, contentDocument) {
+            var deleteButtons = contentDocument.querySelectorAll('.destroy');
+            for (var i = 0; i < deleteButtons.length; i++)
+                deleteButtons[i].click();
+        })
+    ]
+});
+
+Suites.push({
+    name: 'Keet 2.2.5',
+    url: 'todomvc/keet-v2/index.html',
+    version: '2.2.5',
+    prepare: function (runner, contentWindow, contentDocument) {
+        return runner.waitForElement('#new-todo').then(function (element) {
+            element.focus();
+            return element;
+        });
+    },
+    tests: [
+        new BenchmarkTestStep('Adding' + numberOfItemsToAdd + 'Items', function (newTodo, contentWindow, contentDocument) {
+            for (var i = 0; i < numberOfItemsToAdd; i++) {
+                var inputEvent = document.createEvent('Event');
+                inputEvent.initEvent('input', true, true);
+                newTodo.value = 'Something to do ' + i;
+                newTodo.dispatchEvent(inputEvent);
+
+                var keydownEvent = document.createEvent('Event');
+                keydownEvent.initEvent('keydown', true, true);
+                keydownEvent.keyCode = 13; // VK_ENTER
+                newTodo.dispatchEvent(keydownEvent);
+            }
+        }),
+        new BenchmarkTestStep('CompletingAllItems', function (newTodo, contentWindow, contentDocument) {
+            var checkboxes = contentDocument.querySelectorAll('.toggle');
+            for (var i = 0; i < checkboxes.length; i++)
+                checkboxes[i].click();
+        }),
+        new BenchmarkTestStep('DeletingAllItems', function (newTodo, contentWindow, contentDocument) {
+            var deleteButtons = contentDocument.querySelectorAll('.destroy');
+            for (var i = 0; i < deleteButtons.length; i++)
+                deleteButtons[i].click();
+        })
+    ]
+});
+
+Suites.push({
     name: 'Om 0.5',
     url: 'todomvc/om/index.html',
     version: '0.5.0 + React 0.9.0',
@@ -278,6 +352,8 @@ Suites.push({
     ]
 });
 
+
+
 Suites.push({
     name: 'Vue',
     url: 'todomvc/vue/index.html',
@@ -316,6 +392,8 @@ Suites.push({
         })
     ]
 });
+
+
 
 Suites.push({
     name: 'Knockout',
@@ -393,6 +471,8 @@ Suites.push({
     ]
 });
 
+
+
 Suites.push({
     name: 'Mithril',
     url: 'todomvc/mithril/index.html',
@@ -467,6 +547,7 @@ Suites.push({
     ]
 });
 
+
 Suites.push({
     name: 'Vanilla',
     url: 'todomvc/vanilla-es6/index.html',
@@ -502,6 +583,8 @@ Suites.push({
         })
     ]
 });
+
+
 
 Suites.push({
     name: 'choo',
@@ -539,3 +622,5 @@ Suites.push({
         })
     ]
 });
+
+
