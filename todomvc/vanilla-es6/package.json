@@ -5,6 +5,8 @@
     "prepublish": "npm run compile"
   },
   "dependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
     "todomvc-app-css": "^2.0.1",
     "todomvc-common": "^1.0.2"
   },
